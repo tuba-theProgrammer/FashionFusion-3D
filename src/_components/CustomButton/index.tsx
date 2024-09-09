@@ -1,4 +1,6 @@
 import React from "react";
+import  state from '../../_config/store'
+import { useSnapshot } from "valtio";
 // Define the props type for the CustomButton component
 interface CustomButtonProps {
     type: "filled"; // Restrict to valid button types
@@ -8,10 +10,19 @@ interface CustomButtonProps {
   }
   
 const CustomButton:React.FC<CustomButtonProps>=({type,title,customStyles,handleClick})=>{
+   const snap = useSnapshot(state)
+    
+    const generateStyle=(type:any)=>{
+  if(type==='filled'){
+      return{
+        backgroundColor:snap.color,
+        color:'#fff'
+      }
+  }
+}
 return(<>
-<button className={`px-2 py-1.5 flex rounded-md ${customStyles}`} style={}>
-
-
+<button onClick={handleClick} className={`px-2 py-1.5 flex rounded-lg ${customStyles}`} style={generateStyle(type)}>
+{title}
 </button>
 
 </>)
