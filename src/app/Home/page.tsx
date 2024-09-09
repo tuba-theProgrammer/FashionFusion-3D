@@ -1,11 +1,13 @@
 'use client'
 import {motion, AnimatePresence} from 'framer-motion'
 import { useSnapshot } from 'valtio'
+import { useRouter } from 'next/navigation';
 import { headContainerAnimation,headContentAnimation,headTextAnimation,slideAnimation } from '@/_config/motion'
 import state from '@/_config/store'
-import CustomButton from '@/_components/CustomButton'
+import {CustomButton} from '@/_components'
 const Home =()=>{
     const snap = useSnapshot(state)
+    const router = useRouter();
    
  
     return (
@@ -30,7 +32,9 @@ const Home =()=>{
               <CustomButton 
              type="filled"
                title="Customize It"
-                handleClick={()=>state.intro = false}
+                handleClick={()=>{state.intro = false 
+                  router.push('/Customizer');
+                }}
                 customStyles="w-fit px-4 py-2.5 font-bold text-sm"    
                 />
                      

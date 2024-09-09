@@ -21,7 +21,7 @@ const CustomButton:React.FC<CustomButtonProps>=({type,title,customStyles,handleC
   }
 }
 return(<>
-<button onClick={handleClick} className={`px-2 py-1.5 flex rounded-lg ${customStyles}`} style={generateStyle(type)}>
+<button onClick={handleClick} className={`px-2 py-1.5 flex rounded-[20px] ${customStyles}`} style={generateStyle(type)}>
 {title}
 </button>
 
